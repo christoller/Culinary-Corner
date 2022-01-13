@@ -5,6 +5,7 @@ import psycopg2
 # Import Controllers
 from controllers.user_controller import user_controller
 from controllers.session_controller import session_controller
+from controllers.message_board_controller import message_board_controller
 
 DB_URL = os.environ.get("DATABASE_URL", "dbname=project_2")
 SECRET_KEY = os.environ.get("SECRET_KEY", "MY_SECRET_KEY")
@@ -25,6 +26,7 @@ def index():
 # Register Contollers
 app.register_blueprint(user_controller)
 app.register_blueprint(session_controller)
+app.register_blueprint(message_board_controller)
 ## TODO Register controllers
 
 if __name__ == "__main__":

@@ -14,7 +14,7 @@ def signup():
 def create_user():
 
     first_name = request.form.get('fName')
-    last_name = request.form.get('fName')
+    last_name = request.form.get('lName')
     email = request.form.get('email')
     hashed_pw = bcrypt.hashpw(request.form.get('password').encode(), bcrypt.gensalt()).decode()
     location = request.form.get('location')
