@@ -8,15 +8,15 @@ from models.message_board import delete_post, get_all_posts, create_post, delete
 message_board_controller = Blueprint("message_board_controller", __name__, template_folder="../templates")
 
 
-
-
 @message_board_controller.route('/home')
 def homepage():
+    if session['user_id']:
+        posts = get_all_posts()
+        user_id = session['user_id']
 
-    posts = get_all_posts()
-    user_id = session['user_id']
-
-    return render_template('main.html', posts=posts, user_id=user_id)
+        return render_template('main.html', posts=posts, user_id=user_id)
+    else:
+        return redirect('/login')
 
 @message_board_controller.route('/post/create', methods=["POST"])
 def make_post():
@@ -27,8 +27,6 @@ def make_post():
     category = request.form.get('category')
 
     create_post(user_id, post, date_submitted, category)
-
-
     return redirect('/home')
 
 @message_board_controller.route('/post/delete', methods=['POST'])
@@ -38,5 +36,3 @@ def remove_post():
     delete_post(id)
 
     return redirect('/home')
-
-    

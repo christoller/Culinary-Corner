@@ -2,6 +2,13 @@
 %}
 <form action="/login/create" method="POST">
     <h2>Login</h2>
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <ul class="flashes">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %} {% endwith %}
     <div>
         <label for="email">Email</label>
         <input type="text" id="email" name="email" />

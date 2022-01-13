@@ -1,9 +1,18 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
+{% if session['user_id'] %} 
+{% block content %}
 <main>
+    {% with messages = get_flashed_messages() %} {% if messages %}
+        <ul class="flashes">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %} {% endwith %}
     {% for post in posts%}
     <section class="user-post">
         <div class="user-post-body">
-            <img src="" alt="avatar" />
+            <img src="{{post[7]}}" alt="avatar" height="100px" width="100px"/>
             <h3 class="user-post-username"><a href="">{{post[4]}} {{post[5]}}</a></h5>
             <p>Date Submitted:</p>
             <p class="user-post-datestamp">{{ post[2] }}</p>
@@ -34,3 +43,4 @@
     </div>
 </main>
 {% endblock %}
+{% endif %}

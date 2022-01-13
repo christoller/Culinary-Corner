@@ -3,3 +3,25 @@
     justify-content:flex-start;
     gap: 10px;
 }
+main {
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+section {
+   border-radius: 25px;
+   border: 2px solid black;
+   padding: 10%;
+   margin: 20px;
+   display: flex;
+}
+
+section img {
+    align-self: center;
+}
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+}

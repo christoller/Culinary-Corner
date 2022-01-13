@@ -1,4 +1,5 @@
 from flask import Blueprint, request, redirect, render_template, session, flash
+import flask
 from models.user import get_user_by_email
 import bcrypt
 
@@ -22,10 +23,11 @@ def login():
         #update session
         session['user_id'] = user['id']
         session['user_name'] = user['first_name']
-        flash('You were successfully logged in')
-        return redirect('/')
+        flash(f'You are successfully logged in as {user[1]}')
+        return redirect('/home')
     else:
          #redirect  
+        flash(f'Incorrect Username or Password. Please Try Again.')
         return redirect('/login?error=Incorrect')  
 
 
