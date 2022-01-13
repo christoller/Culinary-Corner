@@ -4,10 +4,16 @@
     <section class="user-post">
         <div class="user-post-body">
             <img src="" alt="avatar" />
-            <h3 class="user-post-username"><a href="">{{post[3]}} {{post[4]}}</a></h5>
+            <h3 class="user-post-username"><a href="">{{post[4]}} {{post[5]}}</a></h5>
             <p>Date Submitted:</p>
-            <p class="user-post-datestamp">{{ post[1] }}</p>
-            <p class="user-post-content">{{ post[0] }}</p>
+            <p class="user-post-datestamp">{{ post[2] }}</p>
+            <p class="user-post-content">{{ post[1] }}</p>
+            {% if session['user_id'] == post[0] %}
+            <form action="/post/delete" method="POST">
+                <input type="hidden" name="id" value="{{ post[8] }}">
+                <button type="submit">Delete</button>
+            </form>
+            {% endif %}
         </div>
     </section>
     {% endfor%}

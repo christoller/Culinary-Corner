@@ -27,7 +27,7 @@ def index():
 app.register_blueprint(user_controller)
 app.register_blueprint(session_controller)
 app.register_blueprint(message_board_controller)
-## TODO Register controllers
+
 
 if __name__ == "__main__":
     app.run(debug=True)
