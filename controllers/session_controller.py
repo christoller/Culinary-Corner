@@ -23,7 +23,7 @@ def login():
         #update session
         session['user_id'] = user['id']
         session['user_name'] = user['first_name']
-        flash(f'You are successfully logged in as {user[1]}')
+        flash(f'Hi {user[1]}, Welcome Back!')
         return redirect('/home')
     else:
          #redirect  

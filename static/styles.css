@@ -1,27 +1,349 @@
+/************************************************************/
+/************************************************************/
+                     /* Layout */
+/************************************************************/
+/************************************************************/
+/* * {
+    border: 1px solid red;
+} */
+html {
+    height: 100%;
+}
+
+body {
+    background-color: rgb(251, 246, 238);
+    margin: 0;
+    min-height: 100%;
+}
+
+header {
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+#logo {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px;
+}
+#logo-title {
+    font-size: 1.5em;
+}
+header h3 {
+    margin: 0;
+    font-family: 'Playfair Display',
+    serif;
+    font-weight: 800;
+}
+#logo-img {
+    width: 25px;
+    height: 25px;
+}
 #navbar {
     display: flex;
-    justify-content:flex-start;
-    gap: 10px;
+    flex-direction: row;
+    align-content: center;
+    gap: 15px;
 }
-main {
+footer {
+    text-align: center;
+    margin: 20px auto 0;
+}
+#attributions {
+    margin-top: 5px;
+}
+a:link {
+    text-decoration: none;
+}
+a:visited {
+    text-decoration: none;
+    color: rgb(25, 59, 206);
+}
+
+/************************************************************/
+/************************************************************/
+                    /* Main Feed */
+/************************************************************/
+/************************************************************/
+
+#main-main {
+    background-image: url('/static/images/background-image-6.jpeg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+}
+
+#main-content {
     width: 50%;
+    height: 1000px;
+    background-color: rgba(255, 247, 235, 0.8);
     margin: auto;
     display: flex;
     flex-direction: column;
 }
+
 section {
    border-radius: 25px;
+   background: rgb(255, 247, 235);
    border: 2px solid black;
-   padding: 10%;
-   margin: 20px;
-   display: flex;
+   padding: 3%;
+   margin: 10px;
+}
+.user-post {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
 }
 
-section img {
+.user-post-body {
+    display: flex;
+    flex-direction: column;
+}
+.user-post-username {
+    margin: 0;
+}
+.user-post-body p {
+    margin: 0 0 5px 0;
+    flex-direction: row;
+}
+#user-post-delete {
+    border: none;
+    background-color: rgb(255, 247, 235);
+    transition-duration: 0.2s;
+    padding: 0;
+    color: rgb(25, 59, 206);
+}
+#user-post-delete:hover {
+    color: red;
+    cursor: pointer;
+}
+
+
+
+.collapsible {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 400px;
+    border: none;
+    text-align: center;
+    outline: none;
+    font-size: 15px;
+    position: fixed;
+    bottom: 0;
     align-self: center;
 }
-
-footer {
-    text-align: center;
-    margin-top: 50px;
+.active,
+.collapsible:hover {
+    background-color: #ccc;
 }
+.collapsible:after {
+    content: '\02795';
+    font-size: 13px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2796";
+}
+
+#create-post-box {
+    background: whitesmoke;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    align-self: center;
+    padding: 2%;
+    text-align: center;
+    position: fixed;
+    bottom: 57px;
+    width: 357px;
+    display: none;
+    overflow: hidden;
+}
+#create-post-box button {
+    width: 100px;
+
+}
+
+#post-content {
+    height: 100px;
+    width: 80%;
+    margin-bottom: 5px;
+}
+
+#post-category {
+    margin-bottom: 5px;
+}
+
+/************************************************************/
+/************************************************************/
+                    /* Login Page */
+/************************************************************/
+/************************************************************/
+
+ #login-block {
+     border-radius: 25px;
+     background-color: rgba(255, 255, 255, 0.8);
+     height: 300px;
+     width: 300px;
+     align-self: center
+ }
+ #login-header {
+     text-align: center;
+     color: rgb(0, 0, 0);
+     padding-top: 20px;
+ }
+.login-inputs {
+    margin: 10px 0;
+    color: rgb(0, 0, 0);
+    width: 100px;
+    padding: 0 20%;
+}
+.login-btn-div {
+    padding: 0 20%;
+}
+#login-btn {
+    margin: 3px auto;
+    width: 50%;
+    
+}
+#login-signup-link {
+    width: 50%;
+    margin: 10px auto;
+    
+}
+#login-signup-link a {
+    color: rgb(25, 59, 206);
+}
+
+#login-main {
+    background-image: url('/static/images/background-image-2.jpeg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-evenly;
+    height: 800px;
+
+}
+#login-face {
+    align-self: center;
+    font-family: 'Playfair Display',
+    serif;
+    color: rgb(255, 255, 255);
+    font-size: 4.5em;
+    font-weight: 700;
+    width: 40%;
+}
+
+/************************************************************/
+/************************************************************/
+                   /* Landing Page */
+/************************************************************/
+/************************************************************/
+
+.container-homepage {
+    background-image: url('/static/images/background-image-3.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 800px;
+    width: 100%;
+}
+
+#homepage-content {
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.8);
+    height: 100px;
+    width: 400px;
+    padding: 50px 5%;
+}
+/************************************************************/
+/************************************************************/
+                     /* Signup Page */
+/************************************************************/
+/************************************************************/
+
+#signup-block {
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.8);
+    height: auto;
+    width: 300px;
+    align-self: center;
+    padding: 20px;
+}
+
+#signup-header {
+    text-align: center;
+    color: rgb(0, 0, 0);
+    padding-top: 20px;
+}
+
+.signup-inputs {
+    margin: 10px 0;
+    color: rgb(0, 0, 0);
+    width: 100px;
+    padding: 0 20%;
+}
+
+.signup-btn-div {
+    padding: 0 20%;
+}
+
+#signup-btn {
+    margin: 3px auto;
+    width: 50%;
+}
+
+#signup-signup-link {
+    width: 50%;
+    margin: 10px auto;
+
+}
+
+#signup-signup-link a {
+    color: rgb(25, 59, 206);
+}
+
+#signup-main {
+    background-image: url('/static/images/background-image-7.jpeg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    height: 800px;
+}
+
+#signup-face {
+    align-self: center;
+    font-family: 'Playfair Display',
+        serif;
+    color: rgb(255, 255, 255);
+    font-size: 4em;
+    font-weight: 700;
+    width: 35%;
+}
+#signup-face p {
+    margin: 0;
+}
+
+
+#avatar-select {
+
+}
+#avatar-select img {
+    width: 20px;
+    height: 20px;
+    }

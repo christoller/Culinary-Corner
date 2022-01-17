@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% if session['user_id'] %} 
 {% block content %}
-<main>
+<main id="main-main">
+    <div id="main-content">
     {% with messages = get_flashed_messages() %} {% if messages %}
         <ul class="flashes">
             {% for message in messages %}
@@ -11,35 +12,36 @@
         {% endif %} {% endwith %}
     {% for post in posts%}
     <section class="user-post">
+        <img id="user-post-avatar" src="{{post[7]}}" alt="avatar" height="100px" width="100px"/>
         <div class="user-post-body">
-            <img src="{{post[7]}}" alt="avatar" height="100px" width="100px"/>
             <h3 class="user-post-username"><a href="">{{post[4]}} {{post[5]}}</a></h5>
-            <p>Date Submitted:</p>
-            <p class="user-post-datestamp">{{ post[2] }}</p>
+            <p>Date Submitted: {{ post[2] }} </p>
             <p class="user-post-content">{{ post[1] }}</p>
             {% if session['user_id'] == post[0] %}
             <form action="/post/delete" method="POST">
                 <input type="hidden" name="id" value="{{ post[8] }}">
-                <button type="submit">Delete</button>
+                <button type="submit" id="user-post-delete">Delete</button>
             </form>
             {% endif %}
         </div>
     </section>
     {% endfor%}
-    <div>
+    <button class="collapsible"> Click here to make a post</button>
+    <div id="create-post-box">
         <form action="/post/create" method="POST">
             <div>
                 <label for="make-post">Make a Post</label>
-                <input type="text" name="post-content" id="post-content" />
+                <textarea name="post-content" id="post-content" cols="30" rows="10"></textarea>
             </div>
             <div>
                 <label for="category">Category</label>
-                <input type="text" name="category" id="category" />
+                <input type="text" name="category" id="post-category" />
             </div>
             <div>
                 <button type="submit">Submit</button>
             </div>
         </form>
+    </div>
     </div>
 </main>
 {% endblock %}

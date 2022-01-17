@@ -7,68 +7,41 @@
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="/static/styles.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&display=swap"
+            rel="stylesheet"
+        />
     </head>
     <body>
-        <header></header>
-        <nav id="navbar">
-            <div>
-                <a href="/home">Home</a>
+        <header>
+            <div id="logo">
+                <img id="logo-img" src="/static/images/logo.png" alt="Logo" />
+                <h3 id="logo-title">Culinary Corner</h3>
             </div>
-            {% if session['user_id'] %}
-            <div>
-                <a href="/profile">My Profile</a>
-            </div>
-            <div>
-                <a href="/sessions/delete">Logout</a>
-            </div>
-            {% else %}
-            <div id="nav-login">
-                <a href="/login">Login</a>
-            </div>
-            <div id="nav-signup">
-                <a href="/signup">Signup</a>
-            </div>
-            {% endif %}
-        </nav>
-        {% block content %}{% endblock %}
-        <footer>
-            &copy; Copyright 2022 by
-            <a href="https://github.com/christoller">Chris Toller</a>
-            <div id="attributions">
+            <nav id="navbar">
                 <div>
-                    Icons made by
-                    <a
-                        href="https://www.flaticon.com/authors/amethystdesign"
-                        title="AmethystDesign"
-                        >AmethystDesign</a
-                    >,
-                    <a
-                        href="https://www.flaticon.com/authors/monkik"
-                        title="monkik"
-                        >monkik</a
-                    >,
-
-                    <a
-                        href="https://www.flaticon.com/authors/bakuh-huda"
-                        title="Bakuh Huda"
-                        >Bakuh Huda</a
-                    >,
-
-                    <a
-                        href="https://www.flaticon.com/authors/kosonicon"
-                        title="kosonicon"
-                        >kosonicon</a
-                    >
-                    and
-
-                    <a href="https://www.freepik.com" title="Freepik">Freepik</a
-                    >, from
-                    <a href="https://www.flaticon.com/" title="Flaticon"
-                        >www.flaticon.com</a
-                    >
+                    <a href="/home">Home</a>
                 </div>
-            </div>
-        </footer>
-        <script src="/scripts/app.js" async defer></script>
+                {% if session['user_id'] %}
+                <div>
+                    <a href="/profile">My Profile</a>
+                </div>
+                <div>
+                    <a href="/sessions/delete">Logout</a>
+                </div>
+                {% else %}
+                <div id="nav-login">
+                    <a href="/login">Login</a>
+                </div>
+                <div id="nav-signup">
+                    <a href="/signup">Signup</a>
+                </div>
+                {% endif %}
+            </nav>
+        </header>
+        {% block content %}{% endblock %}
+        <script src="/static/scripts/app.js" async defer></script>
     </body>
 </html>
