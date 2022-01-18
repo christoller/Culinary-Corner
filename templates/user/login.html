@@ -1,33 +1,45 @@
 {% extends "base.html" %} {% block title %}Login{% endblock %} {% block content
 %}
 <main id="login-main">
-    <div id="login-face">
-        <p>Join the worlds fastest growing message board.</p>
-    </div>
-    <div id="login-block">
-        <form action="/login/create" method="POST">
-            <h2 id="login-header">Login</h2>
-            {% with messages = get_flashed_messages() %} {% if messages %}
-            <ul class="flashes">
-                {% for message in messages %}
-                <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %} {% endwith %}
-            <div class="login-inputs">
-                <label for="email">Email</label>
-                <input type="text" id="login-email" name="email" />
+    <div id="backdrop">
+        <div id="login-face">
+            <h3>Connect. Share. Inspire.</h3>
+            <p>
+                Make your voice heard in Australia's number one hospitality
+                network
+            </p>
+        </div>
+        <div id="login-block">
+            <form action="/login/create" method="POST">
+                <h2 id="login-header">Login</h2>
+                {% with messages = get_flashed_messages() %} {% if messages %}
+                <ul class="flashes">
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %} {% endwith %}
+                <div class="login-inputs">
+                    <label for="email">Email</label>
+                    <input type="text" id="login-email" name="email" />
+                </div>
+                <div class="login-inputs">
+                    <label for="password">Password</label>
+                    <input
+                        type="password"
+                        id="login-password"
+                        name="password"
+                    />
+                </div>
+                <div class="login-btn-div">
+                    <button type="submit" id="login-btn">Login</button>
+                </div>
+            </form>
+            <div id="login-signup-link">
+                <a href="/signup"
+                    >Don't have an account? Click here to sign up</a
+                >
             </div>
-            <div class="login-inputs">
-                <label for="password">Password</label>
-                <input type="password" id="login-password" name="password" />
-            </div>
-            <div class="login-btn-div">
-                <button type="submit" id="login-btn">Login</button>
-            </div>
-        </form>
-        <div id="login-signup-link">
-            <a href="/signup">Don't have an account? Click here to sign up</a>
         </div>
     </div>
 </main>

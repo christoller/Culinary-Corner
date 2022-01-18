@@ -21,10 +21,10 @@
                 <h3 id="logo-title">Culinary Corner</h3>
             </div>
             <nav id="navbar">
+                {% if session['user_id'] %}
                 <div>
                     <a href="/home">Home</a>
                 </div>
-                {% if session['user_id'] %}
                 <div>
                     <a href="/profile">My Profile</a>
                 </div>
@@ -32,6 +32,9 @@
                     <a href="/sessions/delete">Logout</a>
                 </div>
                 {% else %}
+                <div>
+                    <a href="/">Home</a>
+                </div>
                 <div id="nav-login">
                     <a href="/login">Login</a>
                 </div>

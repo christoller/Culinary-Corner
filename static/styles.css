@@ -51,6 +51,9 @@ header h3 {
     align-content: center;
     gap: 15px;
 }
+#navbar a {
+    transition-duration: 0.3s;
+}
 footer {
     text-align: center;
     margin: 20px auto 0;
@@ -60,10 +63,64 @@ footer {
 }
 a:link {
     text-decoration: none;
+    color: rgb(0, 0, 0);
+    
 }
 a:visited {
     text-decoration: none;
-    color: rgb(25, 59, 206);
+    color: rgb(0, 0, 0);
+}
+a:hover {
+    color: rgb(181, 181, 181);
+}
+/************************************************************/
+/************************************************************/
+/* Landing Page */
+/************************************************************/
+/************************************************************/
+
+.container-homepage {
+    background-image: url('/static/images/background-image-7.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    height: 800px;
+    width: 100%;
+    padding-top: 60px;
+}
+
+#homepage-content {
+    width: 600px;
+    font-family: 'Playfair Display',
+    serif;
+    font-weight: 600;
+    font-size: 2em;
+    margin-left: 3%;
+    color: rgb(255, 255, 255);
+    /* backdrop-filter: blur(13px); */
+}
+#homepage-content h3 {
+    font-size: 2.5em;
+    margin: 0 auto;
+    width: 600px;
+    line-height: 1em;
+}
+#homepage-content h3 {
+    font-size: 3em;
+}
+#homepage-signup-button {
+    border-radius: 20px;
+    font-size: 0.5em;
+    background-color: blanchedalmond;
+    padding: 5% 10%;
+}
+#homepage-signup-button:hover {
+    background-color: rgb(255, 255, 255);
+}
+.flashes {
+    list-style-type: none;
+    color: rgb(255, 0, 0);
+    margin: 5px;
 }
 
 /************************************************************/
@@ -78,22 +135,32 @@ a:visited {
     background-attachment: fixed;
     background-size: 100%;
 }
+#main-post-header {
+    margin: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
 #main-content {
-    width: 50%;
-    height: 1000px;
-    background-color: rgba(255, 247, 235, 0.8);
+    width: 60%;
+    height: 800px;
+    /* background-color: rgba(240, 240, 240, 0.8); */
+    background-color: rgba(240, 240, 240,0.9);
     margin: auto;
     display: flex;
     flex-direction: column;
+    overflow: scroll;
 }
 
 section {
-   border-radius: 25px;
+   border-radius: 15px;
    background: rgb(255, 247, 235);
-   border: 2px solid black;
+   box-shadow: 2px 2px 2px
+   rgba(0, 0, 0, 0.5);
    padding: 3%;
-   margin: 10px;
+   margin: 5px auto;
+   width: 70%;
 }
 .user-post {
     display: flex;
@@ -105,12 +172,20 @@ section {
     display: flex;
     flex-direction: column;
 }
+.user-post-avatar {
+    border-radius: 50%;
+    background-color: rgb(149, 175, 255);
+}
 .user-post-username {
     margin: 0;
 }
 .user-post-body p {
     margin: 0 0 5px 0;
     flex-direction: row;
+    color: rgb(62, 62, 62);
+}
+.user-post-content {
+    color: rgb(0, 0, 0);
 }
 #user-post-delete {
     border: none;
@@ -123,15 +198,12 @@ section {
     color: red;
     cursor: pointer;
 }
-
-
-
 .collapsible {
-    background-color: #eee;
+    background-color: rgba(149, 175, 255, 0.9);
     color: #444;
     cursor: pointer;
-    padding: 18px;
-    width: 400px;
+    padding: 8px;
+    width: 300px;
     border: none;
     text-align: center;
     outline: none;
@@ -142,7 +214,8 @@ section {
 }
 .active,
 .collapsible:hover {
-    background-color: #ccc;
+    background-color: rgb(37, 67, 218);
+    color: rgb(255, 255, 255);
 }
 .collapsible:after {
     content: '\02795';
@@ -158,19 +231,21 @@ section {
 
 #create-post-box {
     background: whitesmoke;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
+    border-radius: 20px;
+    border: 2px solid black;
     align-self: center;
-    padding: 2%;
+    padding: 5px;
     text-align: center;
     position: fixed;
-    bottom: 57px;
-    width: 357px;
+    top: 300px;
+    width: 400px;
+    height: 250px;
     display: none;
     overflow: hidden;
 }
 #create-post-box button {
     width: 100px;
+    margin: 10px;
 
 }
 
@@ -195,7 +270,8 @@ section {
      background-color: rgba(255, 255, 255, 0.8);
      height: 300px;
      width: 300px;
-     align-self: center
+     align-self: center;
+     padding: 15px;
  }
  #login-header {
      text-align: center;
@@ -224,9 +300,8 @@ section {
 #login-signup-link a {
     color: rgb(25, 59, 206);
 }
-
 #login-main {
-    background-image: url('/static/images/background-image-2.jpeg');
+    background-image: url('/static/images/background-image-3.jpeg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -236,38 +311,32 @@ section {
     height: 800px;
 
 }
+#backdrop {
+    width: 100%;
+    backdrop-filter: blur(7px) grayscale(0.4);
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-evenly;
+}
 #login-face {
     align-self: center;
     font-family: 'Playfair Display',
     serif;
     color: rgb(255, 255, 255);
-    font-size: 4.5em;
-    font-weight: 700;
+    text-align: center;
     width: 40%;
 }
-
-/************************************************************/
-/************************************************************/
-                   /* Landing Page */
-/************************************************************/
-/************************************************************/
-
-.container-homepage {
-    background-image: url('/static/images/background-image-3.jpeg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 800px;
-    width: 100%;
+#login-face h3 {
+    font-size: 4.5em;
+    font-weight: 700;
+    margin: 0;
+}
+#login-face p {
+    font-size: 2em;
+    font-weight: 400;
 }
 
-#homepage-content {
-    border-radius: 25px;
-    background-color: rgba(255, 255, 255, 0.8);
-    height: 100px;
-    width: 400px;
-    padding: 50px 5%;
-}
 /************************************************************/
 /************************************************************/
                      /* Signup Page */
@@ -278,9 +347,14 @@ section {
     border-radius: 25px;
     background-color: rgba(255, 255, 255, 0.8);
     height: auto;
-    width: 300px;
+    width: 450px;
     align-self: center;
     padding: 20px;
+    text-align: center;
+}
+#signup-form-flex {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 #signup-header {
@@ -292,23 +366,30 @@ section {
 .signup-inputs {
     margin: 10px 0;
     color: rgb(0, 0, 0);
-    width: 100px;
-    padding: 0 20%;
+    padding: 0 5%;
+    font-size: 1em;
+    display: flex;
+    flex-direction: column;
+}
+.signup-inputs input {
+    font-size: 1em;
 }
 
 .signup-btn-div {
     padding: 0 20%;
+    margin: 0 auto;
+
 }
 
 #signup-btn {
-    margin: 3px auto;
-    width: 50%;
+    margin: 10px auto;
+    width: 200px;
+    height: 50px;
 }
 
 #signup-signup-link {
     width: 50%;
     margin: 10px auto;
-
 }
 
 #signup-signup-link a {
@@ -316,7 +397,7 @@ section {
 }
 
 #signup-main {
-    background-image: url('/static/images/background-image-7.jpeg');
+    background-image: url('/static/images/background-image-2.jpeg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -338,12 +419,14 @@ section {
 #signup-face p {
     margin: 0;
 }
-
-
 #avatar-select {
-
+    width: 80%;
+    justify-self: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 #avatar-select img {
-    width: 20px;
-    height: 20px;
+    width: 60px;
+    height: 60px;
     }

@@ -7,141 +7,143 @@
     <div id="signup-block">
         <form action="/users" method="POST">
             <h2 id="signup-header">Create a Profile</h2>
-            <div class="signup-inputs">
-                <label for="fName">First Name</label>
-                <input type="text" id="fName" name="fName" />
+            <div id="signup-form-flex">
+                <div class="signup-inputs">
+                    <label for="fName">First Name</label>
+                    <input type="text" id="fName" name="fName" />
+                </div>
+                <div class="signup-inputs">
+                    <label for="lName">Last Name</label>
+                    <input type="text" id="lName" name="lName" />
+                </div>
+                <div class="signup-inputs">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email" />
+                </div>
+                <div class="signup-inputs">
+                    <label for="password">Password</label>
+                    <input type="text" id="password" name="password" />
+                </div>
+                <div class="signup-inputs">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" />
+                </div>
+                <fieldset id="avatar-select">
+                    <legend>Please select Avatar</legend>
+                    <input
+                        type="radio"
+                        name="avatar"
+                        id="male-chef"
+                        value="../../static/images/chef-male.png"
+                    />
+                    <label for="Male Chef">
+                        <img
+                            src="../../static/images/chef-male.png"
+                            alt="Male Chef"
+                            width="100px"
+                            height="100px"
+                        />
+                    </label>
+                    <input
+                        type="radio"
+                        name="avatar"
+                        id="female-chef"
+                        value="../../static/images/chef-female.png"
+                    />
+                    <label for="Female Chef">
+                        <img
+                            src="../../static/images/chef-female.png"
+                            alt="Female Chef"
+                            width="100px"
+                            height="100px"
+                        />
+                    </label>
+                    <input
+                        type="radio"
+                        name="avatar"
+                        id="male-bartender"
+                        value="../../static/images/bartender-male.png"
+                    />
+                    <label for="Male Bartender">
+                        <img
+                            src="../../static/images/bartender-male.png"
+                            alt="Male Bartender"
+                            width="100px"
+                            height="100px"
+                        />
+                    </label>
+                    <input
+                        type="radio"
+                        name="avatar"
+                        id="female-bartender"
+                        value="../../static/images/bartender-female.png"
+                    />
+                    <label for="Female Bartender">
+                        <img
+                            src="../../static/images/bartender-female.png"
+                            alt="Female Bartender"
+                            width="100px"
+                            height="100px"
+                        />
+                    </label>
+                    <input
+                        type="radio"
+                        name="avatar"
+                        id="waiter"
+                        value="../../static/images/waiter.png"
+                    />
+                    <label for="Waiter">
+                        <img
+                            src="../../static/images/waiter.png"
+                            alt="Waiter"
+                            width="100px"
+                            height="100px"
+                        />
+                    </label>
+                    <input
+                        type="radio"
+                        name="avatar"
+                        id="Waitress"
+                        value="../../static/images/waitress.png"
+                    />
+                    <label for="Waitress">
+                        <img
+                            src="../../static/images/waitress.png"
+                            alt="Waitress"
+                            width="100px"
+                            height="100px"
+                        />
+                    </label>
+                    <input
+                        type="radio"
+                        name="avatar"
+                        id="male-barista"
+                        value="../../static/images/barista-male.png"
+                    />
+                    <label for="Male Barista">
+                        <img
+                            src="../../static/images/barista-male.png"
+                            alt="Male Barista"
+                            width="100px"
+                            height="100px"
+                        />
+                    </label>
+                    <input
+                        type="radio"
+                        name="avatar"
+                        id="female-barista"
+                        value="../../static/images/barista-female.png"
+                    />
+                    <label for="Femmale Barista">
+                        <img
+                            src="../../static/images/barista-female.png"
+                            alt="Female Barista"
+                            width="100px"
+                            height="100px"
+                        />
+                    </label>
+                </fieldset>
             </div>
-            <div class="signup-inputs">
-                <label for="lName">Last Name</label>
-                <input type="text" id="lName" name="lName" />
-            </div>
-            <div class="signup-inputs">
-                <label for="email">Email</label>
-                <input type="text" id="email" name="email" />
-            </div>
-            <div class="signup-inputs">
-                <label for="password">Password</label>
-                <input type="text" id="password" name="password" />
-            </div>
-            <div class="signup-inputs">
-                <label for="location">Location</label>
-                <input type="text" id="location" name="location" />
-            </div>
-            <fieldset id="avatar-select">
-                <legend>Please select Avatar</legend>
-                <input
-                    type="radio"
-                    name="avatar"
-                    id="male-chef"
-                    value="../../static/images/chef-male.png"
-                />
-                <label for="Male Chef">
-                    <img
-                        src="../../static/images/chef-male.png"
-                        alt="Male Chef"
-                        width="100px"
-                        height="100px"
-                    />
-                </label>
-                <input
-                    type="radio"
-                    name="avatar"
-                    id="female-chef"
-                    value="../../static/images/chef-female.png"
-                />
-                <label for="Female Chef">
-                    <img
-                        src="../../static/images/chef-female.png"
-                        alt="Female Chef"
-                        width="100px"
-                        height="100px"
-                    />
-                </label>
-                <input
-                    type="radio"
-                    name="avatar"
-                    id="male-bartender"
-                    value="../../static/images/bartender-male.png"
-                />
-                <label for="Male Bartender">
-                    <img
-                        src="../../static/images/bartender-male.png"
-                        alt="Male Bartender"
-                        width="100px"
-                        height="100px"
-                    />
-                </label>
-                <input
-                    type="radio"
-                    name="avatar"
-                    id="female-bartender"
-                    value="../../static/images/bartender-female.png"
-                />
-                <label for="Female Bartender">
-                    <img
-                        src="../../static/images/bartender-female.png"
-                        alt="Female Bartender"
-                        width="100px"
-                        height="100px"
-                    />
-                </label>
-                <input
-                    type="radio"
-                    name="avatar"
-                    id="waiter"
-                    value="../../static/images/waiter.png"
-                />
-                <label for="Waiter">
-                    <img
-                        src="../../static/images/waiter.png"
-                        alt="Waiter"
-                        width="100px"
-                        height="100px"
-                    />
-                </label>
-                <input
-                    type="radio"
-                    name="avatar"
-                    id="Waitress"
-                    value="../../static/images/waitress.png"
-                />
-                <label for="Waitress">
-                    <img
-                        src="../../static/images/waitress.png"
-                        alt="Waitress"
-                        width="100px"
-                        height="100px"
-                    />
-                </label>
-                <input
-                    type="radio"
-                    name="avatar"
-                    id="male-barista"
-                    value="../../static/images/barista-male.png"
-                />
-                <label for="Male Barista">
-                    <img
-                        src="../../static/images/barista-male.png"
-                        alt="Male Barista"
-                        width="100px"
-                        height="100px"
-                    />
-                </label>
-                <input
-                    type="radio"
-                    name="avatar"
-                    id="female-barista"
-                    value="../../static/images/barista-female.png"
-                />
-                <label for="Femmale Barista">
-                    <img
-                        src="../../static/images/barista-female.png"
-                        alt="Female Barista"
-                        width="100px"
-                        height="100px"
-                    />
-                </label>
-            </fieldset>
             <div id="signup-btn-div">
                 <button type="submit" id="signup-btn">Sign up</button>
             </div>
