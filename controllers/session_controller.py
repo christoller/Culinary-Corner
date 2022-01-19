@@ -17,12 +17,12 @@ def login():
         email = request.form.get('email')
         user = get_user_by_email(email)
         password = request.form.get('password')
-        hashed_password = user['password']
         
-        if user and bcrypt.checkpw(password.encode(), hashed_password.encode()):
+        if user and bcrypt.checkpw(password.encode(), user['password'].encode()):
             #update session
             session['user_id'] = user['id']
             session['user_name'] = user['first_name']
+            session['avatar'] = user['avatar']
             return redirect('/home')
         else:
             #redirect  

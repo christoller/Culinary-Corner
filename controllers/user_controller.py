@@ -1,6 +1,6 @@
-from flask import Blueprint, render_template, redirect, request
+from flask import Blueprint, render_template, redirect, request,session
 import bcrypt
-from models.user import  insert_user
+from models.user import  get_user, insert_user, get_posts_from_user
 
 
 user_controller = Blueprint('user_controller', __name__,template_folder='/..templates/user')
@@ -23,3 +23,27 @@ def create_user():
 
     insert_user(first_name, last_name, email, hashed_pw, location, avatar)
     return redirect('/login')
+
+@user_controller.route('/posts')
+def user_posts():
+    if session['user_id']:
+        user_id = session['user_id']
+        posts = get_posts_from_user(user_id)
+        print(posts)
+
+        return render_template('main.html', posts=posts, user_id=user_id)
+    else:
+        return redirect('/login')
+
+@user_controller.route('/profile/<user_id>')
+def user_profile(user_id):
+    if session['user_id']:
+        results = get_user(user_id)
+        user_info = results[0]
+
+        print(user_info)
+
+        return render_template('profile.html', user_info=user_info)
+    else:
+        return redirect('/login')
+    

@@ -31,6 +31,10 @@ def get_all_users():
     results = database.sql_select('SELECT * FROM users', [])
     return results
 
+def get_posts_from_user(user_id):
+    results = database.sql_select('SELECT posts.user_id, posts.post, posts.date_submitted, posts.category, users.first_name, users.last_name, users.location, users.avatar, posts.id FROM posts INNER JOIN users ON users.id = user_id WHERE user_id=%s ORDER BY posts.date_submitted DESC;', [user_id])
+    return results
+    
 def update_user(id, name, email):
     pass
 

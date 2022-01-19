@@ -1,13 +1,11 @@
-{% extends "base.html" %} {% if session['user_id'] %} {% block content %}
+{% extends "base.html" %} {% if session['user_id'] %} 
+{% block user %}
+<img src="{{ session['avatar'] }}" alt="" id="nav-profile-avatar">
+<p>{{ session['user_name']}}</p>
+{% endblock %}
+{% block content %}
 <main id="main-main">
     <div id="main-content">
-        <!-- {% with messages = get_flashed_messages() %} {% if messages %}
-        <ul class="flashes">
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %} {% endwith %} -->
         <div id="main-post-header">
             <form action="/home" method="post">
                 <select name="filter" id="filter">
@@ -25,7 +23,7 @@
     <section class="user-post">
         <img class="user-post-avatar" src="{{post[7]}}" alt="avatar" height="100px" width="100px"/>
         <div class="user-post-body">
-            <h3 class="user-post-username"><a href="">{{post[4]}} {{post[5]}}</a></h5>
+            <h3 class="user-post-username"><a href="/profile/{{post[0]}}">{{post[4]}} {{post[5]}}</a></h5>
             <p class="user-post-details"><span class="user-post-bold">Submitted: </span>{{ post[2] }} </p>
             <p class="user-post-details"><span class="user-post-bold">Location: </span>{{ post[6] }} <span class="user-post-bold">Category: </span>{{ post[3] }} </p>
             <div class="thin-line"></div>

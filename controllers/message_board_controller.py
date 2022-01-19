@@ -1,5 +1,4 @@
-from flask import Blueprint, request, redirect, render_template, session, flash
-import database
+from flask import Blueprint, request, redirect, render_template, session
 from datetime import datetime
 
 
@@ -50,12 +49,3 @@ def remove_post():
     delete_post(id)
 
     return redirect('/home')
-
-# @message_board_controller.route('/post/filter', methods=['POST'])
-# def filter_post():
-
-#     category = request.form.get('filter')
-#     posts = filter_posts(category)
-#     user_id = session['user_id']
-
-#     return render_template('filter.html', posts=posts, user_id=user_id)

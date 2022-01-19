@@ -1,0 +1,18 @@
+{% extends "base.html" %} {% block title %}Profile{% endblock %} {% block
+content %}
+<section id="profile-container">
+    <img
+        class="user-post-avatar"
+        src="{{user_info[6]}}"
+        alt="avatar"
+        height="100px"
+        width="100px"
+    />
+    <div class="user-post-body">
+        <h3 class="user-post-username">{{user_info[1]}} {{user_info[2]}}</h3>
+        <p class="user-post-details">
+            <span class="user-post-bold">Location: </span>{{ user_info[5] }}
+        </p>
+    </div>
+</section>
+{% endblock %}
