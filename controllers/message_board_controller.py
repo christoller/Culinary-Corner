@@ -3,20 +3,34 @@ import database
 from datetime import datetime
 
 
-from models.message_board import delete_post, get_all_posts, create_post, delete_post
+from models.message_board import delete_post, get_all_posts, create_post, delete_post,filter_posts
 
 message_board_controller = Blueprint("message_board_controller", __name__, template_folder="../templates")
 
 
-@message_board_controller.route('/home')
+@message_board_controller.route('/home', methods=["POST","GET"])
 def homepage():
-    if session['user_id']:
-        posts = get_all_posts()
-        user_id = session['user_id']
+    if request.method == "GET":
+        if session['user_id']:
+            posts = get_all_posts()
+            user_id = session['user_id']
 
-        return render_template('main.html', posts=posts, user_id=user_id)
+            return render_template('main.html', posts=posts, user_id=user_id)
+        else:
+            return redirect('/login')
     else:
-        return redirect('/login')
+        category = request.form.get('filter')
+        if category == 'all':
+            posts = get_all_posts()
+            user_id = session['user_id']
+            return render_template('main.html', posts=posts, user_id=user_id)
+        else:
+            posts = filter_posts(category)
+            user_id = session['user_id']
+            return render_template('main.html', posts=posts, user_id=user_id)
+
+
+        
 
 @message_board_controller.route('/post/create', methods=["POST"])
 def make_post():
@@ -36,3 +50,12 @@ def remove_post():
     delete_post(id)
 
     return redirect('/home')
+
+# @message_board_controller.route('/post/filter', methods=['POST'])
+# def filter_post():
+
+#     category = request.form.get('filter')
+#     posts = filter_posts(category)
+#     user_id = session['user_id']
+
+#     return render_template('filter.html', posts=posts, user_id=user_id)

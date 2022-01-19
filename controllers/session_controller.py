@@ -11,25 +11,25 @@ def loginpage():
 
     return render_template('/user/login.html')
 
-@session_controller.route('/login/create', methods=["POST"])
+@session_controller.route('/login/create', methods=["POST", "GET"])
 def login():
-
-    email = request.form.get('email')
-    user = get_user_by_email(email)
-    password = request.form.get('password')
-    hashed_password = user['password']
-    
-    if user and bcrypt.checkpw(password.encode(), hashed_password.encode()):
-        #update session
-        session['user_id'] = user['id']
-        session['user_name'] = user['first_name']
-        flash(f'Hi {user[1]}, Welcome Back!')
-        return redirect('/home')
+    if request.method == "POST":
+        email = request.form.get('email')
+        user = get_user_by_email(email)
+        password = request.form.get('password')
+        hashed_password = user['password']
+        
+        if user and bcrypt.checkpw(password.encode(), hashed_password.encode()):
+            #update session
+            session['user_id'] = user['id']
+            session['user_name'] = user['first_name']
+            return redirect('/home')
+        else:
+            #redirect  
+            flash('Incorrect Username or Password. Please Try Again.')
+            return redirect('/login?error=Incorrect')  
     else:
-         #redirect  
-        flash(f'Incorrect Username or Password. Please Try Again.')
-        return redirect('/login?error=Incorrect')  
-
+        render_template('login.html')
 
 @session_controller.route('/sessions/delete', methods=["GET", "POST"])
 def logout():
