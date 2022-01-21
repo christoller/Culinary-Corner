@@ -1,6 +1,8 @@
 import psycopg2
 from psycopg2.extras import DictCursor
-from app import DB_URL
+import os
+
+DB_URL = os.environ.get("DATABASE_URL", "dbname=project_2")
 
 def sql_select(query, params):
     conn = psycopg2.connect(DB_URL)
