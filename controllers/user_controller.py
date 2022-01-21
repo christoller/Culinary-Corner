@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, redirect, request,session
 import bcrypt
+import flask
 from models.user import  get_user_info, insert_user, get_posts_from_user, update_user
 import socket
 import requests
@@ -8,13 +9,12 @@ user_controller = Blueprint('user_controller', __name__,template_folder='/..temp
 
 @user_controller.route('/signup')
 def signup():
-    hostname = socket.gethostname()
-    local_ip = socket.gethostbyname(hostname)
+
+    local_ip = flask.request.remote_addr
     url = f'http://ip-api.com/json/{local_ip}?fields=status,city'
     location_response = requests.get(url)
     location_info = location_response.json()
     location = ''
-    
     if location_info['status'] == 'success':
         location = location_info['city']
 
