@@ -35,7 +35,6 @@
                 <div id="nav-user-profile" onclick="dropDown()">
                     {% block user %} {% endblock %}
                     <div id="myDropdown" class="dropdown-content">
-                        <a href="/posts">My Posts</a>
                         <a href="/profile/{{session['user_id']}}">My Profile</a>
                         <a href="/sessions/delete">Logout</a>
                     </div>

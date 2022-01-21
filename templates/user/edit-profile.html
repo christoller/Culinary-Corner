@@ -1,40 +1,48 @@
-{% extends "base.html" %} {% block title %}Signup{% endblock %} {% block content
-%}
-<main id="signup-main">
-    <div id="signup-backdrop">
-        <div id="signup-face">
-            <p>Join Australia's fastest growing hospitality message board.</p>
-        </div>
-        <div id="signup-block">
-            <form action="/users" method="POST">
-                <h2 id="signup-header">Create a Profile</h2>
-                <div id="signup-form-flex">
-                    <div class="signup-inputs">
-                        <label for="fName">First Name</label>
-                        <input type="text" id="fName" name="fName" />
-                    </div>
-                    <div class="signup-inputs">
+{% extends 'base.html' %}
+{% if session['user_id'] %}
+{% block content %}
+<main class="main-main">
+<section id="edit-profile-container">
+<form action="/update" method="POST" id="edit-form">
+    <h3>Edit Profile</h3>
+    <input type="hidden" value="{{user_info[0]}}" name="user-id">
+    <div class="edit-inputs">
+        <label for="fName">First Name</label>
+        <input type="text" id="fName" name="fName" value="{{user_info['first_name']}}"/>
+    </div>
+    <div class="edit-inputs">
                         <label for="lName">Last Name</label>
-                        <input type="text" id="lName" name="lName" />
-                    </div>
-                    <div class="signup-inputs">
-                        <label for="email">Email</label>
-                        <input type="text" id="email" name="email" />
-                    </div>
-                    <div class="signup-inputs">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password" />
-                    </div>
-                    <div class="signup-inputs">
+                        <input type="text" id="lName" name="lName" value="{{user_info['last_name']}}"/>
+    </div>
+    <div class="edit-inputs">
                         <label for="location">Location</label>
                         <input
                             type="text"
                             id="location"
                             name="location"
-                            value="{{location}}"
+                            value="{{user_info['location']}}"
                         />
-                    </div>
-                    <fieldset class="avatar-select">
+    </div>
+    <div class="edit-inputs">
+                        <label for="job-title">Job Title</label>
+                        <input type="text" id="job-title" name="job-title" value="{{user_info['job_title']}}"/>
+    </div>
+    <div class="edit-inputs">
+                        <label for="workplace">Workplace</label>
+                        <input type="text" id="workplace" name="workplace" value="{{user_info['workplace']}}"/>
+    </div>
+    <div class="edit-inputs">
+        <label for="interests">Interests</label>
+        <input type="text" id="interests" name="interests" value="{{user_info['interests']}}"/>
+    </div>
+    <label for="bio" id="bio-label">Bio</label>
+    <div class="edit-inputs">
+        
+        <textarea name="bio" id="bio" cols="1" rows="10" placeholder="Write a bio!">
+            {{user_info['bio']}}
+        </textarea>             
+    </div>
+    <fieldset class="avatar-select" id="edit-avatar-select">
                         <legend>Please select Avatar</legend>
                         <input
                             type="radio"
@@ -47,7 +55,7 @@
                             <img
                                 src="../../static/images/chef-male.png"
                                 alt="Male Chef"
-                                width="100px"
+                                                        width="100px"
                                 height="100px"
                             />
                         </label>
@@ -156,13 +164,14 @@
                                 height="100px"
                             />
                         </label>
-                    </fieldset>
-                </div>
-                <div id="signup-btn-div">
-                    <button type="submit" class="signup-btn">Sign up</button>
-                </div>
-            </form>
-        </div>
+    </fieldset>
     </div>
+    <div id="update-btn-div">
+        <button type="submit" class="signup-btn">Update</button>
+    </div>
+</form>
+</section>
 </main>
-{% include 'footer.html' %} {% endblock %}
+{% include 'footer.html' %}
+{% endblock %}
+{% endif %}

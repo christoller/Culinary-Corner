@@ -1,0 +1,18 @@
+{% for post in posts%}
+    <section class="user-post profile-post">
+        <img class="user-post-avatar" src="{{post[7]}}" alt="avatar" height="100px" width="100px"/>
+        <div class="user-post-body">
+            <h3 class="user-post-username"><a href="/profile/{{post[0]}}">{{post[4]}} {{post[5]}}</a></h5>
+            <p class="user-post-details"><span class="user-post-bold">Submitted: </span>{{ post[2] }} </p>
+            <p class="user-post-details"><span class="user-post-bold">Location: </span>{{ post[6] }} <span class="user-post-bold">Category: </span>{{ post[3] }} </p>
+            <div class="thin-line"></div>
+            <p class="user-post-content">{{ post[1] }}</p>
+            {% if session['user_id'] == post[0] %}
+            <form action="/post/delete" method="POST">
+                <input type="hidden" name="id" value="{{ post[8] }}">
+                <button type="submit" id="user-post-delete">Delete</button>
+            </form>
+            {% endif %}
+        </div>
+    </section>
+    {% endfor%}

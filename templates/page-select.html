@@ -1,0 +1,15 @@
+{% block page_select %}
+<div id="page_number_div">
+    <p>Page {{page_number}} of {{number_of_pages}}</p>
+    {% if page_number != 1 %}
+    <a href="/home/page/{{page_number - 1}}">Previous Page</a>
+    {% endif %} {% for number in range(1, number_of_pages + 1) %} {% if
+    page_number == number %}
+    <a href="/home/page/{{number}}"><b>{{number}}</b></a>
+    {% else %}
+    <a href="/home/page/{{number}}">{{number}}</a>
+    {% endif %} {% endfor %} {% if page_number != number_of_pages%}
+    <a href="/home/page/{{page_number + 1}}">Next Page</a>
+    {% endif %}
+</div>
+{% endblock %}

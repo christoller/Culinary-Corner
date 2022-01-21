@@ -29,5 +29,7 @@ app.register_blueprint(session_controller)
 app.register_blueprint(message_board_controller)
 
 
+
+
 if __name__ == "__main__":
     app.run(debug=True)

@@ -181,7 +181,7 @@ a:hover {
 /************************************************************/
 /************************************************************/
 
-#main-main {
+.main-main {
     background-image: url('/static/images/background-image-6.jpeg');
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -249,6 +249,8 @@ a:hover {
 }
 .user-post-content {
     color: rgb(0, 0, 0);
+    word-break: break-all;
+    white-space: normal;
 }
 #user-post-delete {
     border: none;
@@ -260,6 +262,18 @@ a:hover {
 #user-post-delete:hover {
     color: red;
     cursor: pointer;
+}
+#page_number_div {
+    width: 30%;
+    margin: 0 auto 50px;
+    text-align: center;
+    border-radius: 15px;
+    background: rgb(255, 247, 235);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    padding-bottom: 10px;
+}
+#page_number_div p {
+    margin-bottom: 5px;
 }
 .collapsible {
     background-color: rgba(253, 224, 177,0.9);
@@ -467,7 +481,7 @@ a:hover {
     margin: 0 auto;
 }
 
-#signup-btn {
+.signup-btn {
     margin: 10px auto;
     width: 200px;
     height: 50px;
@@ -510,7 +524,7 @@ a:hover {
 #signup-face p {
     margin: 0;
 }
-#avatar-select {
+.avatar-select {
     width: 80%;
     flex-grow: 2;
     justify-self: center;
@@ -520,23 +534,23 @@ a:hover {
     row-gap: 3px;
     column-gap: 30px;
 }
-#avatar-select input {
+.avatar-select input {
     position: absolute;
     opacity: 0;
     width: 0;
     height: 0;
 }
-#avatar-select label {
+.avatar-select label {
     cursor: pointer;
     filter: grayscale(90%);
 }
-#avatar-select label:hover {
+.avatar-select label:hover {
     filter: grayscale(0);
 }
-#avatar-select input[type="radio"]:checked+label {
+.avatar-select input[type="radio"]:checked+label {
     filter: grayscale(0);
 }
-#avatar-select img {
+.avatar-select img {
     width: 60px;
     height: 60px;
 }
@@ -546,3 +560,81 @@ a:hover {
                     /* Profile Page */
 /************************************************************/
 /************************************************************/
+
+#profile-container {
+    padding-top: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: rgba(240, 240, 240, 0.9);
+}
+#profile-info {
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;   
+}
+#profile-info p {
+    font-size: 1.2em;
+    word-break: break-all;
+    white-space: normal;
+}
+#profile-info h3 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+#edit-profile-link {
+    margin-top: 10px;
+}
+#edit-profile-link a {
+    color: rgb(0, 0, 255);
+}
+#profile-user-posts section {
+    width: 600px;
+}
+#posts-header {
+    font-size: 2em;
+    margin-top: 0;
+}
+
+/************************************************************/
+/************************************************************/
+                /* Edit Profile Page */
+/************************************************************/
+/************************************************************/
+#edit-profile-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: rgba(240, 240, 240, 0.9);
+}
+#bio {
+    width: 300px;
+}
+#edit-form {
+    background: rgba(253, 224, 177, 0.9);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    padding: 20px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px
+}
+
+.edit-inputs label {
+    display: inline-block;
+    width: 100px;
+    margin: 5px auto 0;
+}
+#edit-avatar-select {
+    width: 80%;
+    justify-self: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-evenly;
+    row-gap: 3px;
+    column-gap: 30px;
+}

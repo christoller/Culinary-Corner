@@ -1,18 +1,49 @@
 {% extends "base.html" %} {% block title %}Profile{% endblock %} {% block
 content %}
-<section id="profile-container">
-    <img
-        class="user-post-avatar"
-        src="{{user_info[6]}}"
-        alt="avatar"
-        height="100px"
-        width="100px"
-    />
-    <div class="user-post-body">
-        <h3 class="user-post-username">{{user_info[1]}} {{user_info[2]}}</h3>
-        <p class="user-post-details">
-            <span class="user-post-bold">Location: </span>{{ user_info[5] }}
-        </p>
+<main class="main-main">
+    <div id="profile-container">
+        <section id="profile-info">
+            <img
+                class="user-post-avatar"
+                src="{{user_info[4]}}"
+                alt="avatar"
+                height="100px"
+                width="100px"
+            />
+            <div class="user-post-body" id="profile-body">
+                <h3 class="user-post-username">
+                    {{user_info[1]}} {{user_info[2]}}
+                </h3>
+                <p class="user-post-details">
+                    <span class="user-post-bold">Job Title: </span>{{
+                    user_info[5] }}
+                </p>
+                <p class="user-post-details">
+                    <span class="user-post-bold">Workplace: </span>{{
+                    user_info[6] }}
+                </p>
+                <p class="user-post-details">
+                    <span class="user-post-bold">Location: </span>{{
+                    user_info[3] }}
+                </p>
+                <p class="user-post-details">
+                    <span class="user-post-bold">Interests: </span>{{
+                    user_info[7] }}
+                </p>
+                <p class="user-post-details">
+                    <span class="user-post-bold">Bio: </span>{{ user_info[8] }}
+                </p>
+                {% if session['user_id'] == user_info[0] %}
+                <div id="edit-profile-link">
+                    <a href="/edit">Edit Profile</a>
+                </div>
+                {% endif %}
+            </div>
+        </section>
+        <section id="profile-user-posts">
+            <h3 id="posts-header">Posts</h3>
+            {% block posts %} {% include 'post-feed.html'%} {% endblock %}
+        </section>
     </div>
-</section>
-{% endblock %}
+</main>
+{% include 'footer.html' %} {% endblock %}
