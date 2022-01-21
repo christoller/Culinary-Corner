@@ -1,24 +1,15 @@
 from flask import Blueprint, render_template, redirect, request,session
 import bcrypt
-import flask
 from models.user import  get_user_info, insert_user, get_posts_from_user, update_user
-import socket
-import requests
 
 user_controller = Blueprint('user_controller', __name__,template_folder='/..templates/user')
 
 @user_controller.route('/signup')
 def signup():
-
-    local_ip = flask.request.remote_addr
-    url = f'http://ip-api.com/json/{local_ip}?fields=status,city'
-    location_response = requests.get(url)
-    location_info = location_response.json()
-    location = ''
-    if location_info['status'] == 'success':
-        location = location_info['city']
-
-    return render_template('user/signup.html', location=location)
+    if session['user_id']:
+        return redirect('/home')
+    else:
+        return render_template('user/signup.html')
 
 @user_controller.route('/users', methods=["POST"])
 def create_user():
@@ -39,7 +30,6 @@ def user_posts():
     if session['user_id']:
         user_id = session['user_id']
         posts = get_posts_from_user(user_id)
-        print(posts)
 
         return render_template('main.html', posts=posts, user_id=user_id)
     else:
@@ -83,7 +73,6 @@ def update_profile():
         bio = request.form.get('bio')
         avatar = request.form.get('avatar')
 
-        print(id, first_name, last_name, location, job_title, workplace, interests, bio, avatar)
         update_user(id, first_name, last_name, location, job_title, workplace, interests, bio, avatar)
 
         return redirect('/home')
