@@ -12,7 +12,7 @@ CREATE TABLE posts (
     id serial PRIMARY KEY,
     user_id INTEGER,
     post TEXT,
-    date_submitted TIMESTAMP,
+    date_submitted TEXT,
     category TEXT,
     CONSTRAINT fk_user 
         FOREIGN KEY(user_id)

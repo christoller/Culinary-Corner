@@ -1,5 +1,4 @@
 from flask import Blueprint, request, redirect, render_template, session, flash
-import flask
 from models.user import get_user_by_email
 import bcrypt
 

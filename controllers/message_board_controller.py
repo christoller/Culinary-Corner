@@ -10,6 +10,9 @@ message_board_controller = Blueprint("message_board_controller", __name__, templ
 
 @message_board_controller.route('/home', methods=["POST","GET"])
 def homepage():
+    if not session['user_id']:
+        return redirect('/login')
+
     page_number = 1
     number_of_pages = math.ceil(len(get_all_posts()) / 10)
 
