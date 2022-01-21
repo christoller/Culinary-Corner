@@ -9,9 +9,7 @@ user_controller = Blueprint('user_controller', __name__,template_folder='/..temp
 @user_controller.route('/signup')
 def signup():
     hostname = socket.gethostname()
-    # local_ip = socket.gethostbyname(hostname)
-    local_ip = '103.169.141.125'
-    print(local_ip)
+    local_ip = socket.gethostbyname(hostname)
     url = f'http://ip-api.com/json/{local_ip}?fields=status,city'
     location_response = requests.get(url)
     location_info = location_response.json()
@@ -74,19 +72,20 @@ def edit_profile():
 
 @user_controller.route('/update', methods=['POST'])
 def update_profile():
+    if session['user_id']:
+        id = int(session['user_id'])
+        first_name = request.form.get('fName')
+        last_name = request.form.get('lName')
+        location = request.form.get('location')
+        job_title = request.form.get('job-title')
+        workplace = request.form.get('workplace')
+        interests = request.form.get('interests')
+        bio = request.form.get('bio')
+        avatar = request.form.get('avatar')
 
-    # id = request.form.get('user-id')
-    id = int(session['user_id'])
-    first_name = request.form.get('fName')
-    last_name = request.form.get('lName')
-    location = request.form.get('location')
-    job_title = request.form.get('job-title')
-    workplace = request.form.get('workplace')
-    interests = request.form.get('interests')
-    bio = request.form.get('bio')
-    avatar = request.form.get('avatar')
+        print(id, first_name, last_name, location, job_title, workplace, interests, bio, avatar)
+        update_user(id, first_name, last_name, location, job_title, workplace, interests, bio, avatar)
 
-    print(id, first_name, last_name, location, job_title, workplace, interests, bio, avatar)
-    update_user(id, first_name, last_name, location, job_title, workplace, interests, bio, avatar)
-
-    return redirect('/home')
+        return redirect('/home')
+    else:
+        return redirect('/login')

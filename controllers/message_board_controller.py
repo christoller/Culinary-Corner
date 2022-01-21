@@ -10,32 +10,33 @@ message_board_controller = Blueprint("message_board_controller", __name__, templ
 
 @message_board_controller.route('/home', methods=["POST","GET"])
 def homepage():
-    if not session['user_id']:
-        return redirect('/login')
+    if session['user_id']:
 
-    page_number = 1
-    number_of_pages = math.ceil(len(get_all_posts()) / 10)
+        page_number = 1
+        number_of_pages = math.ceil(len(get_all_posts()) / 10)
 
-    print(number_of_pages)
-    
-    if request.method == "GET":
-        if session['user_id']:
-            posts = get_first_10_posts()
-            user_id = session['user_id']
+        print(number_of_pages)
+        
+        if request.method == "GET":
+            if session['user_id']:
+                posts = get_first_10_posts()
+                user_id = session['user_id']
 
-            return render_template('main.html', posts=posts, user_id=user_id, page_number=page_number, number_of_pages=number_of_pages)
+                return render_template('main.html', posts=posts, user_id=user_id, page_number=page_number, number_of_pages=number_of_pages)
+            else:
+                return redirect('/login')
         else:
-            return redirect('/login')
+            category = request.form.get('filter')
+            if category == 'all':
+                posts = get_first_10_posts()
+                user_id = session['user_id']
+                return render_template('main.html', posts=posts, user_id=user_id,page_number=page_number, number_of_pages=number_of_pages)
+            else:
+                posts = filter_posts(category)
+                user_id = session['user_id']
+                return render_template('main.html', posts=posts, user_id=user_id,page_number=page_number, number_of_pages=number_of_pages)
     else:
-        category = request.form.get('filter')
-        if category == 'all':
-            posts = get_first_10_posts()
-            user_id = session['user_id']
-            return render_template('main.html', posts=posts, user_id=user_id,page_number=page_number, number_of_pages=number_of_pages)
-        else:
-            posts = filter_posts(category)
-            user_id = session['user_id']
-            return render_template('main.html', posts=posts, user_id=user_id,page_number=page_number, number_of_pages=number_of_pages)
+        return redirect('/')
 
 @message_board_controller.route('/home/page/<page>')
 def page(page):

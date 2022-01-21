@@ -44,6 +44,3 @@ def get_user_info(user_id):
 def update_user(id, firstname, lastname, location, jobtitle, workplace, interests, bio, avatar):    
     database.sql_write('UPDATE users SET first_name=%s, last_name=%s, location=%s, avatar=%s WHERE id=%s', [firstname, lastname, location, avatar, id])
     database.sql_write('UPDATE users_info SET job_title=%s, workplace=%s, interests=%s, bio=%s WHERE user_id=%s', [jobtitle, workplace, interests, bio, id])
-
-def delete_user(id):
-    pass
