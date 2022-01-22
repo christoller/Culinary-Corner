@@ -2,6 +2,8 @@ from flask import Blueprint, request, redirect, render_template, session
 from datetime import datetime
 import math
 
+from flask.helpers import flash
+
 
 from models.message_board import delete_post, get_all_posts, create_post, delete_post,filter_posts, get_first_10_posts, get_next_10_posts
 
@@ -71,6 +73,7 @@ def make_post():
     date_submitted = now.strftime("%y-%m-%d %H:%M:%S")
     category = request.form.get('category')
 
+    
     create_post(user_id, post, date_submitted, category)
     return redirect('/home')
 

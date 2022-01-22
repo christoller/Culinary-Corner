@@ -31,9 +31,6 @@ def create_user():
     elif len(password) < 6:
         flash("Password must be at least 6 characters.")
         return redirect('/signup')
-    elif first_name or last_name or email or password or location or avatar == '':
-        flash("Please complete all fields and try again")
-        return redirect('/signup')
     else:
         insert_user(first_name, last_name, email, hashed_pw, location, avatar)
         return redirect('/login')
