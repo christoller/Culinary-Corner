@@ -18,13 +18,11 @@ def login():
         password = request.form.get('password')
         
         if user and bcrypt.checkpw(password.encode(), user['password'].encode()):
-            #update session
             session['user_id'] = user['id']
             session['user_name'] = user['first_name']
             session['avatar'] = user['avatar']
             return redirect('/home')
         else:
-            #redirect  
             flash('Incorrect Username or Password. Please Try Again.')
             return redirect('/login?error=Incorrect')  
     else:

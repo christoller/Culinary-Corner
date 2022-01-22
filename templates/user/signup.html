@@ -8,6 +8,13 @@
         <div id="signup-block">
             <form action="/users" method="POST">
                 <h2 id="signup-header">Create a Profile</h2>
+                {% with messages = get_flashed_messages() %} {% if messages %}
+                <ul class="flashes">
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %} {% endwith %}
                 <div id="signup-form-flex">
                     <div class="signup-inputs">
                         <label for="fName">First Name</label>

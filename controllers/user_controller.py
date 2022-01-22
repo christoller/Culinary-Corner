@@ -1,6 +1,6 @@
-from flask import Blueprint, render_template, redirect, request,session
+from flask import Blueprint, render_template, redirect, request,session, flash
 import bcrypt
-from models.user import  get_user_info, insert_user, get_posts_from_user, update_user
+from models.user import  get_user_by_email, get_user_info, insert_user, get_posts_from_user, update_user
 
 user_controller = Blueprint('user_controller', __name__,template_folder='/..templates/user')
 
@@ -22,8 +22,21 @@ def create_user():
     location = request.form.get('location')
     avatar = request.form.get('avatar')
 
-    insert_user(first_name, last_name, email, hashed_pw, location, avatar)
-    return redirect('/login')
+    if get_user_by_email(email):
+        flash("Account already exists with this email. Please try again or log in")
+        return redirect('/signup')
+    elif not '@' in email:
+        flash("Incorrect Email Format. Please try again")
+        return redirect('/signup')
+    elif len(password) < 6:
+        flash("Password must be at least 6 characters.")
+        return redirect('/signup')
+    elif first_name or last_name or email or password or location or avatar == '':
+        flash("Please complete all fields and try again")
+        return redirect('/signup')
+    else:
+        insert_user(first_name, last_name, email, hashed_pw, location, avatar)
+        return redirect('/login')
 
 @user_controller.route('/posts')
 def user_posts():

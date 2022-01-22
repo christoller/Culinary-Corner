@@ -14,8 +14,6 @@ def homepage():
 
         page_number = 1
         number_of_pages = math.ceil(len(get_all_posts()) / 10)
-
-        print(number_of_pages)
         
         if request.method == "GET":
             if session['user_id']:
