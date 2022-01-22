@@ -249,6 +249,7 @@ a:hover {
 }
 .user-post-content {
     color: rgb(0, 0, 0);
+    hyphens: auto;
     word-break: break-all;
     white-space: normal;
 }
@@ -579,6 +580,7 @@ a:hover {
     font-size: 1.2em;
     word-break: break-all;
     white-space: normal;
+    hyphens: auto;
 }
 #profile-info h3 {
     font-size: 2em;
