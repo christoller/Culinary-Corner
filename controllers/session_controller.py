@@ -7,28 +7,27 @@ session_controller = Blueprint("session_controller", __name__, template_folder="
 
 @session_controller.route('/login')
 def loginpage():
-
-    return render_template('/user/login.html')
-
-@session_controller.route('/login/create', methods=["POST", "GET"])
-def login():
-    if request.method == "POST":
-        email = request.form.get('email')
-        user = get_user_by_email(email)
-        password = request.form.get('password')
-        
-        if user and bcrypt.checkpw(password.encode(), user['password'].encode()):
-            session['user_id'] = user['id']
-            session['user_name'] = user['first_name']
-            session['avatar'] = user['avatar']
-            return redirect('/home')
-        else:
-            flash('Incorrect Username or Password. Please Try Again.')
-            return redirect('/login?error=Incorrect')  
+    if session.get('user_id'):
+        return redirect('/home')
     else:
-        render_template('login.html')
+        return render_template('login.html')
 
-@session_controller.route('/sessions/delete', methods=["GET", "POST"])
+@session_controller.route('/login/create', methods=["POST"])
+def login():
+
+    email = request.form.get('email')
+    user = get_user_by_email(email)
+    password = request.form.get('password')
+    
+    if user and bcrypt.checkpw(password.encode(), user['password'].encode()):
+        session['user_id'] = user['id']
+        return redirect('/home')
+    else:
+        flash('Incorrect Username or Password. Please Try Again.')
+        return redirect('/login?error=Incorrect')  
+
+
+@session_controller.route('/sessions/delete', methods=["POST"])
 def logout():
     session['user_id'] = None
     session['user_name'] = None
