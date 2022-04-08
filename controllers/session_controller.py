@@ -21,6 +21,8 @@ def login():
     
     if user and bcrypt.checkpw(password.encode(), user['password'].encode()):
         session['user_id'] = user['id']
+        session['user_name'] = user['first_name']
+        session['avatar'] = user['avatar']
         return redirect('/home')
     else:
         flash('Incorrect Username or Password. Please Try Again.')
